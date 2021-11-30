@@ -1,56 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from, } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 import GetAllPosts from './Components/GetAllPosts';
 import Form from './Components/Form';
-
-const errorLink = onError(({ graphqlErrors, networkError }) => {
-  if (graphqlErrors) {
-    graphqlErrors.map(({message, location, path}) => {
-      alert(`Graphql error ${message}`);
-    });
-  }
-});
-
-const link = from([
-  errorLink,
-  new HttpLink({uri:"http://localhost:4000/graphql"}),
-]);
-
-const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  link: link
-});
+import Home from './pages/Home';
+import HighScore from './pages/HighScore';
+import Loot from './pages/Loot';
 
 function App() {
   return (
-    <div className="App">  <ApolloProvider client={client}>
-      <GetAllPosts /> 
-    </ApolloProvider>
-    <ApolloProvider client={client}> 
-      <Form /> 
-    </ApolloProvider>
+    <div className="App">  
+      <Router>
+        <ul>
+          <li><a><Link to="/">Home</Link></a></li>
+          <li><a><Link to="/loot">Loot</Link></a></li>
+          <li><a><Link to="/highscore">High Score</Link></a></li>
+        </ul>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/loot" element={<Loot />} />
+          <Route path="/highscore" element={<HighScore />} />
+        </Routes>
+      </Router>
     </div>)
-  
-  //(
-  //  <div className="App">
-  //    <header className="App-header">
-  //      <img src={logo} className="App-logo" alt="logo" />
-  //      <p>
-  //        Edit <code>src/App.js</code> and save to reload.
-  //      </p>
-  //      <a
-  //        className="App-link"
-  //        href="https://reactjs.org"
-  //        target="_blank"
-  //        rel="noopener noreferrer"
-  //      >
-  //        Learn React
-  //      </a>
-  //    </header>
-  //  </div>
-  //);
+
 }
 
 export default App;
