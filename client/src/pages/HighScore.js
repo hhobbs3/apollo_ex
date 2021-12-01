@@ -2,7 +2,7 @@ import './HighScore.js';
 import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from, } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 import GetAllPosts from '../Components/GetAllPosts';
-import Form from '../Components/Form';
+import PostForm from '../Components/PostForm';
 
 const errorLink = onError(({ graphqlErrors, networkError }) => {
   if (graphqlErrors) {
@@ -26,9 +26,7 @@ function HighScore() {
   return (
     <div className="HighScore">  <ApolloProvider client={client}>
       <GetAllPosts /> 
-    </ApolloProvider>
-    <ApolloProvider client={client}> 
-      <Form /> 
+      <PostForm /> 
     </ApolloProvider>
     </div>)
 

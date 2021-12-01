@@ -2,7 +2,9 @@ import './Loot.js';
 import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from, } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 import GetAllPosts from '../Components/GetAllPosts';
-import Form from '../Components/Form';
+import TreasureForm from '../Components/TreasureForm';
+import GetAllTreasure from '../Components/GetAllTreasure';
+import GetAllMagicItems from '../Components/GetAllMagicItems.js';
 
 const errorLink = onError(({ graphqlErrors, networkError }) => {
   if (graphqlErrors) {
@@ -24,11 +26,11 @@ const client = new ApolloClient({
 
 function Loot() {
   return (
-    <div className="Loot">  <ApolloProvider client={client}>
-      <GetAllPosts /> 
-    </ApolloProvider>
+    <div className="Loot">  
     <ApolloProvider client={client}> 
-      <Form /> 
+      {/*<TreasureForm /> */}
+      <GetAllTreasure />
+      <GetAllMagicItems />
     </ApolloProvider>
     </div>)
 

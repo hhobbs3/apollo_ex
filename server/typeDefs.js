@@ -57,7 +57,7 @@ const typeDefs = gql`
         rollMagicItem(table: String, roll:Int): MagicItem
         getTreasure(id:ID): Treasure 
         getAllTreasure: [Treasure]
-        rollTreasure(challenge: String, roll:Int): Treasure
+        rollTreasure(challenge: String, type: String, roll:Int): Treasure
     }
 
     input MagicItemInput {

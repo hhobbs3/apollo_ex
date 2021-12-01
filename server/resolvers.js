@@ -36,13 +36,14 @@ const resolvers = {
             return await Treasure.findById(id);
         },
         rollTreasure: async (parent, args, context, info) => {
-            return await Treasure.findOne( { 
+            const treasure = await Treasure.findOne( { 
                 challenge: args.challenge, 
+                type: args.type,
                 lowProbability: { $lte: args.roll }, 
-                highProbability: { $gte: args.roll } 
-            }); 
+                highProbability: { $gte: args.roll }
+            });
+            return treasure;
         },
-        
     },
     Mutation: {
         createPost: async (parent, args, context, info) => {

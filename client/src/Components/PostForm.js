@@ -2,7 +2,7 @@ import { useMutation } from '@apollo/client';
 import React, {useState} from 'react'
 import { CREATE_POST_MUTATION } from "../GraphQL/Mutations";
 
-function Form() {
+function PostForm() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
 
@@ -42,4 +42,4 @@ function Form() {
     )
 }
 
-export default Form
+export default PostForm

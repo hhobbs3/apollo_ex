@@ -1,9 +1,5 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from, } from '@apollo/client';
-import { onError } from '@apollo/client/link/error';
-import GetAllPosts from './Components/GetAllPosts';
-import Form from './Components/Form';
 import Home from './pages/Home';
 import HighScore from './pages/HighScore';
 import Loot from './pages/Loot';
